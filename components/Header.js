@@ -13,12 +13,10 @@ export function Header({ navigation }) {
           <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
             <div>
               <div className="flex items-center justify-between py-3 md:py-0 md:block">
-                <a href="/">
                   <PrismicNextImage 
                     field={navigation.data.logo}
                     className="w-16 md:w-20"
                   />
-                </a>
                 <div className="md:hidden">
                   <button
                     className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
