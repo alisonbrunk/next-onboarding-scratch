@@ -1,0 +1,136 @@
+{
+  "id": "call_to_action",
+  "type": "SharedSlice",
+  "name": "CallToAction",
+  "description": "CallToAction",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        },
+        "body_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph"
+          }
+        },
+        "button_1_text": {
+          "type": "Text",
+          "config": { "label": "Button 1 Text", "placeholder": "" }
+        },
+        "button_1_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button 1 Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "button_2_text": {
+          "type": "Text",
+          "config": { "label": "Button 2 Text", "placeholder": "" }
+        },
+        "button_2_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button 2 Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": ["White", "Gray"],
+            "default_value": "White"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "centered",
+      "name": "Centered",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        },
+        "body_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph"
+          }
+        },
+        "button_1_text": {
+          "type": "Text",
+          "config": { "label": "Button 1 Text", "placeholder": "" }
+        },
+        "button_1_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button 1 Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "button_2_text": {
+          "type": "Text",
+          "config": { "label": "Button 2 Text", "placeholder": "" }
+        },
+        "button_2_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button 2 Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": ["White", "Gray"],
+            "default_value": "White"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
