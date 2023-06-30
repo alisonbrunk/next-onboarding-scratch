@@ -18,7 +18,7 @@ const Index = ({ articles, page, navigation}) => {
       <SliceZone slices={page.data.slices} components={components} />
       <Bounded as="section" size="lg">
         <Heading as="h2" className="mb-6">
-          Recent Articles
+          Recent Articles 
         </Heading>
         <ul className="grid grid-cols-1 gap-16">
           {articles.map((article) => (
