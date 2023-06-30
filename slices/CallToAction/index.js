@@ -1,5 +1,6 @@
 import * as prismic from '@prismicio/client';
-import { PrismicNextLink } from '@prismicio/next'
+import { useEffect } from 'react';
+import { PrismicNextLink, PrismicNextImage } from '@prismicio/next'
 
 import clsx from "clsx";
 
@@ -13,19 +14,33 @@ const components = {
       {children}
     </Heading>
   ),
-  paragraph: ({ children }) => <p className="last:mb-0 mb-8 font-light text-2xl tracking-wide text-gray-500">{children}</p>,
+  paragraph: ({ children }) => <p className="last:mb-0 mb-8 font-light text-2xl tracking-wide">{children}</p>,
 };
 
 const CallToAction = ({ slice }) => {
+  const backgroundImage = slice.primary.background_image;
+
   return (
     <section className={clsx(
           "px-6 py-24 sm:py-32 lg:px-12",
-          slice.variation === "centered" && "flex text-center",
+          slice.variation === "centered" && "flex text-center justify-center",
+          slice.variation === "backgroundImage" && "flex text-center relative",
           slice.primary.background_color === "White" && "bg-white",
           slice.primary.background_color === "Gray" && "bg-neutral-100"
         )}>
-      <div className="mx-auto max-w-screen-xl">
-        <div className="max-w-screen-md">
+      {prismic.isFilled.image(backgroundImage) && (
+        <PrismicNextImage
+          field={backgroundImage}
+          alt=""
+          fill={true}
+          className="pointer-events-none select-none object-cover"
+        />
+      )}
+      <div className="mx-auto max-w-screen-xl relative">
+        <div className={clsx(
+            "max-w-screen-md",
+             slice.variation === "backgroundImage" && "text-white",
+          )}>
           <PrismicRichText
               field={slice.primary.title}
               components={components}
@@ -36,7 +51,8 @@ const CallToAction = ({ slice }) => {
           />
           <div className={clsx(
             "flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4",
-              slice.variation === "centered" && "justify-center"
+              slice.variation === "centered" && "justify-center", 
+              slice.variation === "backgroundImage" && "justify-center",
             )}>
             {prismic.isFilled.link(slice.primary.button_1_link) && (
               <PrismicNextLink

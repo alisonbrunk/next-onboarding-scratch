@@ -1,6 +1,6 @@
 {
-  "id": "page",
-  "label": "Page",
+  "id": "article",
+  "label": "Article",
   "format": "page",
   "repeatable": true,
   "status": true,
@@ -10,10 +10,22 @@
       "title": {
         "type": "StructuredText",
         "config": {
-          "label": "title",
+          "label": "Title",
           "placeholder": "",
           "allowTargetBlank": true,
-          "single": "heading1"
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "publishDate": {
+        "type": "Date",
+        "config": { "label": "Publish Date", "placeholder": "" }
+      },
+      "featuredImage": {
+        "type": "Image",
+        "config": {
+          "label": "Featured Image",
+          "constraint": {},
+          "thumbnails": []
         }
       },
       "slices": {
@@ -21,12 +33,8 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "call_to_action": { "type": "SharedSlice" },
-            "hero": { "type": "SharedSlice" },
-            "frequently_asked_questions": { "type": "SharedSlice" },
-            "image": { "type": "SharedSlice" },
             "text": { "type": "SharedSlice" },
-            "contact_form": { "type": "SharedSlice" }
+            "image": { "type": "SharedSlice" }
           }
         }
       }
@@ -37,7 +45,7 @@
           "label": "Meta Description",
           "placeholder": "A brief summary of the page"
         },
-        "type": "StructuredText"
+        "type": "Text"
       },
       "meta_image": {
         "config": {

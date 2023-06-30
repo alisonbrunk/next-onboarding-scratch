@@ -5,9 +5,9 @@ export function Heading({ as: Comp = "h1", size = "lg", children, className }) {
     <Comp
       className={clsx(
         "font-semibold leading-normal tracking-normal",
-        size === "xl" && "text-5xl md:text-7xl",
-        size === "lg" && "text-4xl md:text-5xl",
-        size === "md" && "text-3xl md:text-4xl",
+        size === "xl" && "text-4xl md:text-6xl",
+        size === "lg" && "text-3xl md:text-4xl",
+        size === "md" && "text-2xl md:text-3xl",
         size === "sm" && "text-xl md:text-2xl",
         className
       )}

@@ -1,16 +1,19 @@
 {
-  "id": "page",
-  "label": "Page",
+  "id": "blog_home",
+  "label": "Blog Home",
   "format": "page",
-  "repeatable": true,
+  "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "uid": {
+        "type": "UID",
+        "config": { "label": "blog_home", "placeholder": "" }
+      },
       "title": {
         "type": "StructuredText",
         "config": {
-          "label": "title",
+          "label": "Title",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "heading1"
@@ -19,16 +22,7 @@
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": {
-          "choices": {
-            "call_to_action": { "type": "SharedSlice" },
-            "hero": { "type": "SharedSlice" },
-            "frequently_asked_questions": { "type": "SharedSlice" },
-            "image": { "type": "SharedSlice" },
-            "text": { "type": "SharedSlice" },
-            "contact_form": { "type": "SharedSlice" }
-          }
-        }
+        "config": { "choices": {} }
       }
     },
     "SEO & Metadata": {
@@ -37,7 +31,7 @@
           "label": "Meta Description",
           "placeholder": "A brief summary of the page"
         },
-        "type": "StructuredText"
+        "type": "Text"
       },
       "meta_image": {
         "config": {

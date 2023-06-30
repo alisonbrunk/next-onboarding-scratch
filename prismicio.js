@@ -26,6 +26,10 @@ const routes = [
     uid: "home",
     path: "/",
   },
+  {
+    type: "article",
+    path: "/articles/:uid",
+  },
 ];
 
 /**
