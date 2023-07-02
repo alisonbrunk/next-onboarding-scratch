@@ -45,9 +45,9 @@ const TextareaField = ({ label, name, placeholder, required = true }) => {
 
 const ContactForm = () => {
   return (
-    <Bounded as="section" size="small">
+    <Bounded as="section">
       <Heading as="h1" className="mb-6">
-        Contact Me
+        Contact Us Today!
       </Heading>
       <form
         action="/api/contact"

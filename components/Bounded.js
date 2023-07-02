@@ -4,6 +4,7 @@ export function Bounded({
   as: Comp = "div",
   yPadding = "base",
   nav,
+  footer,
   collapsible = true,
   className,
   children,
@@ -18,6 +19,7 @@ export function Bounded({
         yPadding === "base" && "py-20 md:py-28",
         yPadding === "lg" && "py-32 md:py-48",
         nav === "yes" && "shadow-lg shadow-gray-300",
+        footer === "yes" && "bg-teal-400",
         className
       )}
     >

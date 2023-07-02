@@ -6,9 +6,9 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { Layout } from "@/components/Layout";
 
-const Page = ({ page, navigation }) => {
+const Page = ({ page, navigation, footer }) => {
   return (
-    <Layout navigation={navigation}>
+    <Layout navigation={navigation} footer={footer}>
       <Head>
         <title>
           {prismic.asText(page.data.title)}
@@ -26,11 +26,13 @@ export async function getStaticProps({ params, locale, previewData }) {
 
   const page = await client.getByUID("page", params.uid, { lang: locale });
   const navigation = await client.getSingle("navigation", { lang: locale });
+   const footer = await client.getSingle("footer", { lang: locale });
 
   return {
     props: {
       page,
       navigation,
+      footer,
     },
   };
 }

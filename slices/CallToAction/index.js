@@ -7,18 +7,20 @@ import clsx from "clsx";
 import { Heading } from "@/components/Heading";
 import { PrismicRichText } from "@/components/PrismicRichText";
 
+const CallToAction = ({ slice }) => {
+  const backgroundImage = slice.primary.background_image;
 
-const components = {
+  const components = {
   heading2: ({ children }) => (
     <Heading as="h2" size="lg" className="mb-4 mt-12 first:mt-0 last:mb-0">
       {children}
     </Heading>
   ),
-  paragraph: ({ children }) => <p className="last:mb-0 mb-8 font-light text-2xl tracking-wide">{children}</p>,
+  paragraph: ({ children }) => <p className={clsx(
+    "last:mb-0 mb-8 font-light text-xl tracking-wide text-gray-500",
+    slice.variation === "backgroundImage" && "text-white",
+    )}>{children}</p>,
 };
-
-const CallToAction = ({ slice }) => {
-  const backgroundImage = slice.primary.background_image;
 
   return (
     <section className={clsx(

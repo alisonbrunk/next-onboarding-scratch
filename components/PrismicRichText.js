@@ -20,7 +20,7 @@ const defaultComponents = {
       {children}
     </Heading>
   ),
-  paragraph: ({ children }) => <p className="last:mb-0 mb-8 font-light text-2xl tracking-wide">{children}</p>,
+  paragraph: ({ children }) => <p className="last:mb-0 mb-8 font-light text-xl tracking-wide">{children}</p>,
   oList: ({ children }) => (
     <ol className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ol>
   ),

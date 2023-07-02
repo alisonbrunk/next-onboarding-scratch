@@ -29,16 +29,16 @@ export function Article({ article }) {
         </div>
       </PrismicNextLink>
       <div className="grid grid-cols-1 gap-3 md:col-span-2">
-        <Heading as="h2">
+        <Heading as="h3" size="md">
           <PrismicNextLink document={article}>
             <PrismicText field={article.data.title} />
           </PrismicNextLink>
         </Heading>
-        <p className="font-serif italic tracking-tighter text-slate-500">
+        <p className="italic tracking-tighter text-slate-500">
           {dateFormatter.format(date)}
         </p>
         {excerpt && (
-          <p className="font-serif leading-relaxed md:text-lg md:leading-relaxed">
+          <p className="leading-relaxed md:text-lg md:leading-relaxed text-gray-500">
             {excerpt}
           </p>
         )}

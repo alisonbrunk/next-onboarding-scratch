@@ -105,82 +105,107 @@ export type ArticleDocument<Lang extends string = string> =
     "article",
     Lang
   >;
-/** Content for Blog Home documents */
-interface BlogHomeDocumentData {
+/** Content for Footer documents */
+interface FooterDocumentData {
   /**
-   * Title field in *Blog Home*
+   * Links field in *Footer*
    *
-   * - **Field Type**: Title
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_home.title
+   * - **API ID Path**: footer.links[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/group
    *
    */
-  title: prismic.TitleField;
+  links: prismic.GroupField<Simplify<FooterDocumentDataLinksItem>>;
   /**
-   * Slice Zone field in *Blog Home*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_home.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
-   */
-  slices: prismic.SliceZone<BlogHomeDocumentDataSlicesSlice>;
-  /**
-   * Meta Description field in *Blog Home*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: blog_home.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  meta_description: prismic.KeyTextField;
-  /**
-   * Meta Image field in *Blog Home*
+   * Logo field in *Footer*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_home.meta_image
-   * - **Tab**: SEO & Metadata
+   * - **API ID Path**: footer.logo
+   * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  meta_image: prismic.ImageField<never>;
+  logo: prismic.ImageField<never>;
   /**
-   * Meta Title field in *Blog Home*
+   * legal field in *Footer*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: blog_home.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.legal[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/group
    *
    */
-  meta_title: prismic.KeyTextField;
+  legal: prismic.GroupField<Simplify<FooterDocumentDataLegalItem>>;
 }
 /**
- * Slice for *Blog Home → Slice Zone*
+ * Item in Footer → Links
  *
  */
-type BlogHomeDocumentDataSlicesSlice = never;
+export interface FooterDocumentDataLinksItem {
+  /**
+   * Label field in *Footer → Links*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links[].label
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  label: prismic.RichTextField;
+  /**
+   * Link field in *Footer → Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
 /**
- * Blog Home document from Prismic
+ * Item in Footer → legal
  *
- * - **API ID**: `blog_home`
+ */
+export interface FooterDocumentDataLegalItem {
+  /**
+   * Label field in *Footer → legal*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.legal[].label
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  label: prismic.RichTextField;
+  /**
+   * link field in *Footer → legal*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.legal[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
  * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type BlogHomeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<BlogHomeDocumentData>,
-    "blog_home",
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
     Lang
   >;
 /** Content for  Navigation documents */
@@ -331,7 +356,7 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 export type AllDocumentTypes =
   | ArticleDocument
-  | BlogHomeDocument
+  | FooterDocument
   | NavigationDocument
   | PageDocument;
 /**
@@ -834,6 +859,17 @@ interface ImageSliceDefaultPrimary {
    *
    */
   caption: prismic.RichTextField;
+  /**
+   * article field in *Image → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: image.primary.article
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  article: prismic.BooleanField;
 }
 /**
  * Default variation for Image Slice
@@ -877,6 +913,17 @@ interface TextSliceDefaultPrimary {
    *
    */
   text: prismic.RichTextField;
+  /**
+   * article field in *Text → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: text.primary.article
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  article: prismic.BooleanField;
 }
 /**
  * Default variation for Text Slice
@@ -917,9 +964,10 @@ declare module "@prismicio/client" {
       ArticleDocumentData,
       ArticleDocumentDataSlicesSlice,
       ArticleDocument,
-      BlogHomeDocumentData,
-      BlogHomeDocumentDataSlicesSlice,
-      BlogHomeDocument,
+      FooterDocumentData,
+      FooterDocumentDataLinksItem,
+      FooterDocumentDataLegalItem,
+      FooterDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
       NavigationDocument,

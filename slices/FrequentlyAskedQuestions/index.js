@@ -14,7 +14,7 @@ const components = {
       {children}
     </Heading>
   ),
-  paragraph: ({ children }) => <p className="last:mb-0 mb-8 font-light text-2xl tracking-wide text-gray-500">{children}</p>,
+  paragraph: ({ children }) => <p className="last:mb-0 mb-8 font-light text-xl tracking-wide text-gray-500">{children}</p>,
 };
 
 

@@ -9,6 +9,7 @@ import { components } from "@/slices";
 import { Layout } from "@/components/Layout";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
+import { Footer } from "@/components/Footer";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -37,8 +38,8 @@ function LatestArticle({ article }) {
 
 export default function Article({
   article,
-  latestArticles,
   navigation,
+  footer,
 }) {
   const date = prismic.asDate(
     article.data.publishDate || article.first_publication_date
@@ -49,46 +50,31 @@ export default function Article({
       withHeaderDivider={false}
       withProfile={false}
       navigation={navigation}
+      footer={footer}
     >
       <Head>
         <title>
           {prismic.asText(article.data.title)}
         </title>
       </Head>
-      <article>
-        <Bounded className="pb-0" yPadding="sm">
-          <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
-            <PrismicText field={article.data.title} />
-          </h1>
-          <p className="font-serif italic tracking-tighter text-slate-500">
-            {dateFormatter.format(date)}
-          </p>
-        </Bounded>
-        <Bounded as="section" className="pb-0" yPadding="xs">
+      <article className="md:max-w-3xl md:m-auto bg-white shadow-gray-300 shadow-lg py-28 md:pt-0">
+        <Bounded as="section" className="pb-0" yPadding="sm">
+          <div className="mb-3">
+            <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
+              <PrismicText field={article.data.title} />
+            </h1>
+            <p className="font-serif italic tracking-tighter text-slate-500">
+              {dateFormatter.format(date)}
+            </p>
+          </div>
           <PrismicNextImage
             field={article.data.featuredImage}
             fill={false}
-            className="h-96 w-auto"
+            priority={true}
           />
         </Bounded>
         <SliceZone slices={article.data.slices} components={components} />
       </article>
-      {latestArticles.length > 0 && (
-        <Bounded>
-          <div className="grid grid-cols-1 justify-items-center gap-16 md:gap-24">
-            <div className="w-full">
-              <Heading size="2xl" className="mb-10">
-                Latest articles
-              </Heading>
-              <ul className="grid grid-cols-1 gap-12">
-                {latestArticles.map((article) => (
-                  <LatestArticle key={article.id} article={article} />
-                ))}
-              </ul>
-            </div>
-          </div>
-        </Bounded>
-      )}
     </Layout>
   );
 }
@@ -97,20 +83,14 @@ export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
   const article = await client.getByUID("article", params.uid);
-  const latestArticles = await client.getAllByType("article", {
-    limit: 3,
-    orderings: [
-      { field: "my.article.publishDate", direction: "desc" },
-      { field: "document.first_publication_date", direction: "desc" },
-    ],
-  });
   const navigation = await client.getSingle("navigation");
+  const footer = await client.getSingle("footer");
 
   return {
     props: {
       article,
-      latestArticles,
       navigation,
+      footer,
     },
   };
 }

@@ -67,7 +67,7 @@ export function Header({ navigation }) {
                   {navigation.data?.links.map((item) => (
                     <li
                       key={prismic.asText(item.label)}
-                      className="font-normal tracking-normal text-slate-800"
+                      className="font-normal tracking-normal text-gray-500 hover:text-teal-500"
                     >
                       <PrismicNextLink field={item.link}>
                         <PrismicText field={item.label} />
